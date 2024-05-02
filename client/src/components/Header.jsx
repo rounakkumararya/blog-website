@@ -34,7 +34,10 @@ export default function Header() {
           <PiMoonFill />
         </Button>
         <Link to="/sign-in">
-          <Button gradientDuoTone="pinkToOrange" outline>
+          <Button
+            className="bg-gradient-to-tr  from-yellow-300  to-orange-400   text-white"
+            outline
+          >
             Sign In
           </Button>
         </Link>
