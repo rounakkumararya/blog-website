@@ -1,8 +1,8 @@
-import React from "react";
 import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { PiMoonFill } from "react-icons/pi";
+import { GiDrippingHoney } from "react-icons/gi";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -10,11 +10,12 @@ export default function Header() {
     <Navbar className="border-b-2">
       <Link
         to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl text-red-400"
+        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold  "
       >
-        Blog
-        <span className="px-2 py-1 bg-gradient-to-tr  from-orange-400  to-pink-400   text-white ">
+        BLOG
+        <span className="px-2 py-1 rounded-lg bg-gradient-to-tr  from-yellow-300  to-orange-400   text-white ">
           Hive
+          <GiDrippingHoney className=" inline" />
         </span>
       </Link>
       <form>
@@ -25,7 +26,7 @@ export default function Header() {
           className="hidden lg:inline"
         />
       </form>
-      <Button className="w-12 h-10 lg:hidden" color="blue">
+      <Button className="w-12 h-10 lg:hidden" color="yellow">
         <CiSearch />
       </Button>
       <div className="flex gap-5 md:order-2">
@@ -41,13 +42,19 @@ export default function Header() {
       </div>
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
+          <Link className=" hover:text-orange-500" to="/">
+            Home
+          </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link to="/about">About</Link>
+          <Link className=" hover:text-orange-500" to="/about">
+            About
+          </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/projects">Projects</Link>
+          <Link className=" hover:text-orange-500" to="/projects">
+            Projects
+          </Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
