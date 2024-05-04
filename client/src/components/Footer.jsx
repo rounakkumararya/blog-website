@@ -11,7 +11,10 @@ import {
 
 export default function FooterCon() {
   return (
-    <Footer container className="border border-t-8 border-yellow-300">
+    <Footer
+      container
+      className="border border-t-8 dark:bg-zinc-800 border-yellow-300"
+    >
       <div className="w-full mx-auto">
         <div className="grid w-full justify-between sm:flex md:grid-cols-1 ">
           <div className="mt-5">
@@ -28,7 +31,7 @@ export default function FooterCon() {
           </div>
           <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
-              <Footer.Title title="About" />
+              <Footer.Title className="dark:text-orange-400 " title="About" />
               <Footer.LinkGroup col>
                 <Footer.Link
                   href="https://www.google.com"
@@ -47,7 +50,10 @@ export default function FooterCon() {
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Follow Us" />
+              <Footer.Title
+                className="dark:text-orange-400 "
+                title="Follow Us"
+              />
               <Footer.LinkGroup col>
                 <Footer.Link
                   href="https://www.github.com/rounakkumararya"
@@ -69,7 +75,7 @@ export default function FooterCon() {
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Legal" />
+              <Footer.Title className="dark:text-orange-400 " title="Legal" />
               <Footer.LinkGroup col>
                 <Footer.Link href="#">Privacy policy</Footer.Link>
                 <Footer.Link href="#">Terms & conditions</Footer.Link>
@@ -85,11 +91,31 @@ export default function FooterCon() {
             year={new Date().getFullYear()}
           />
           <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon href="#" icon={BsGithub} />
-            <Footer.Icon href="#" icon={BsDribbble} />
+            <Footer.Icon
+              className="dark:text-orange-400 "
+              href="#"
+              icon={BsFacebook}
+            />
+            <Footer.Icon
+              className="dark:text-orange-400 "
+              href="#"
+              icon={BsInstagram}
+            />
+            <Footer.Icon
+              className="dark:text-orange-400 "
+              href="#"
+              icon={BsTwitter}
+            />
+            <Footer.Icon
+              className="dark:text-orange-400 "
+              href="#"
+              icon={BsGithub}
+            />
+            <Footer.Icon
+              className="dark:text-orange-400 "
+              href="#"
+              icon={BsDribbble}
+            />
           </div>
         </div>
       </div>

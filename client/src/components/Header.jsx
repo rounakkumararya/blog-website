@@ -1,15 +1,18 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-import { PiMoonFill } from "react-icons/pi";
 import { GiDrippingHoney } from "react-icons/gi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Header() {
   const path = useLocation().pathname;
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
   return (
-    <Navbar className="border-b-2">
+    <Navbar className="border-b-2 dark:bg-zinc-800 ">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold  "
@@ -28,21 +31,27 @@ export default function Header() {
           className="hidden lg:inline"
         />
       </form>
-      <Button className="w-12 h-10 lg:hidden" color="yellow">
+      <Button className="w-12 h-10 lg:hidden " color="yellow">
         <CiSearch />
       </Button>
-      <div className="flex gap-5 md:order-2">
-        <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
-          <PiMoonFill />
+      <div className="flex gap-5 md:order-2 ">
+        <Button
+          className="w-12 h-10 hidden sm:inline"
+          color="gray"
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
         </Button>
         {currentUser ? (
           <Dropdown
+            className="dark:bg-zinc-800 dark:shadow-sm-light  "
             arrowIcon={false}
             inline
             label={<Avatar alt="user" img={currentUser.profilePic} />}
           >
             <Dropdown.Header>
-              <div className="flex flex-col items-center p-3 gap-1">
+              <div className="flex flex-col items-center p-3 gap-1 ">
                 <img
                   src={currentUser.profilePic}
                   alt="profile pic"
@@ -65,7 +74,7 @@ export default function Header() {
         ) : (
           <Link to="/sign-in">
             <Button
-              className="bg-gradient-to-tr  from-yellow-300  to-orange-400   text-white"
+              className="bg-gradient-to-tr hover:scale-125  from-yellow-300  to-orange-400   text-white"
               outline
             >
               Sign In
@@ -76,17 +85,26 @@ export default function Header() {
       </div>
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={"div"}>
-          <Link className=" hover:text-orange-500" to="/">
+          <Link
+            className=" dark:text-orange-400 dark:hover:text-white hover:text-orange-400"
+            to="/"
+          >
             Home
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link className=" hover:text-orange-500" to="/about">
+          <Link
+            className=" dark:text-orange-400 dark:hover:text-white hover:text-orange-400"
+            to="/about"
+          >
             About
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link className=" hover:text-orange-500" to="/projects">
+          <Link
+            className=" dark:text-orange-400 dark:hover:text-white hover:text-orange-400"
+            to="/projects"
+          >
             Projects
           </Link>
         </Navbar.Link>
