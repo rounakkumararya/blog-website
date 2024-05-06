@@ -11,6 +11,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
+
   return (
     <Navbar className="border-b-2 dark:bg-zinc-800 ">
       <Link
@@ -48,14 +49,23 @@ export default function Header() {
             className="dark:bg-zinc-800 dark:shadow-sm-light  "
             arrowIcon={false}
             inline
-            label={<Avatar alt="user" img={currentUser.profilePic} />}
+            label={
+              <Avatar alt="user" rounded img={currentUser.profilePic}>
+                <div className="m-auto text-sm font-medium  dark:text-white">
+                  <div>{currentUser.username}</div>
+                  <div className="text-xs  text-gray-500 dark:text-gray-400">
+                    joined {currentUser.createdAt.split("T")[0]}
+                  </div>
+                </div>
+              </Avatar>
+            }
           >
             <Dropdown.Header>
               <div className="flex flex-col items-center p-3 gap-1 ">
                 <img
                   src={currentUser.profilePic}
                   alt="profile pic"
-                  className="rounded-lg w-24 "
+                  className="rounded-full w-24 border-4 border-[lightgray] shadow-lg"
                 />
                 <span className="block text-sm font-bold">
                   @{currentUser.username}

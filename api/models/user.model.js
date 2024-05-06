@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
     profilePic: {
       type: String,
       default:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-vector%2Fprofile-icon&psig=AOvVaw3O5sKQfSiGPS01Fd6vlOdH&ust=1714790515387000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPCRts668IUDFQAAAAAdAAAAABAE",
+        "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg",
     },
   },
   { timestamps: true }
