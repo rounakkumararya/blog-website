@@ -92,27 +92,27 @@ export default function FooterCon() {
           />
           <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
             <Footer.Icon
-              className="dark:text-orange-400 "
+              className="hover:text-orange-400 dark:hover:text-white dark:text-orange-400 "
               href="#"
               icon={BsFacebook}
             />
             <Footer.Icon
-              className="dark:text-orange-400 "
+              className="hover:text-orange-400 dark:hover:text-white dark:text-orange-400 "
               href="#"
               icon={BsInstagram}
             />
             <Footer.Icon
-              className="dark:text-orange-400 "
+              className="hover:text-orange-400 dark:hover:text-white dark:text-orange-400 "
               href="#"
               icon={BsTwitter}
             />
             <Footer.Icon
-              className="dark:text-orange-400 "
+              className="hover:text-orange-400 dark:hover:text-white dark:text-orange-400 "
               href="#"
               icon={BsGithub}
             />
             <Footer.Icon
-              className="dark:text-orange-400 "
+              className="hover:text-orange-400 dark:hover:text-white dark:text-orange-400 "
               href="#"
               icon={BsDribbble}
             />

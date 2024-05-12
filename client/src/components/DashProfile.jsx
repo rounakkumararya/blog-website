@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { TextInput, Button, Label, FileInput, Alert } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
-import { MdEdit } from "react-icons/md";
+import { MdCameraAlt } from "react-icons/md";
 import {
   getDownloadURL,
   getStorage,
@@ -105,8 +105,8 @@ export default function DashProfile() {
             } `}
           />
 
-          <MdEdit
-            className="absolute bottom-0 cursor-pointer right-0 w-6 h-6"
+          <MdCameraAlt
+            className="absolute dark:text-gray-400 bottom-0 cursor-pointer right-0 w-6 h-6"
             onClick={() => filePickerRef.current.click()}
           />
         </div>
