@@ -25,6 +25,9 @@ export default function DashProfile() {
   const [imageFileUploadingProgress, setImageFileUploadingProgress] =
     useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
+  const [imageFileUploading, setImageFileUploading] = useState(false);
+  const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
+  const [updateUserError, setUpdateUserError] = useState(null);
   const [formData, setFormData] = useState({});
   const filePickerRef = useRef();
   const dispatch = useDispatch();
@@ -42,6 +45,7 @@ export default function DashProfile() {
   }, [imageFile]);
 
   const uploadImage = async () => {
+    setImageFileUploading(true);
     setImageFileUploadError(null);
     const storage = getStorage(app);
     const fileName = new Date().getTime() + imageFile.name;
@@ -62,11 +66,13 @@ export default function DashProfile() {
         setImageFileUploadingProgress(null);
         setImageFile(null);
         setImageFileUrl(null);
+        setImageFileUploading(false);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
           setImageFile(downloadUrl);
           setFormData({ ...formData, profilePic: downloadUrl });
+          setImageFileUploading(false);
         });
       }
     );
@@ -77,9 +83,16 @@ export default function DashProfile() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setUpdateUserSuccess(null);
+    setUpdateUserError(null);
     if (Object.keys(formData).length === 0) {
+      setUpdateUserError("No changes made.");
       return;
     }
+    if (imageFileUploading) {
+      setUpdateUserError("Please wait for image to upload.");
+    }
+
     try {
       dispatch(updateStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
@@ -92,11 +105,14 @@ export default function DashProfile() {
       const data = await res.json();
       if (!res.ok) {
         dispatch(updateFailure(data.message));
+        setUpdateUserError(data.message);
       } else {
         dispatch(updateSuccess(data));
+        setUpdateUserSuccess("User's profile updated successfully.");
       }
     } catch (error) {
       dispatch(updateFailure(error.message));
+      setUpdateUserError(error.message);
     }
   };
   return (
@@ -190,7 +206,16 @@ export default function DashProfile() {
           Delete Account
         </Button>
       </form>
-      <div className="mt-5 max-w-lg mx-auto w-full"></div>
+      {updateUserSuccess && (
+        <Alert color="success" className="mt-5">
+          {updateUserSuccess}
+        </Alert>
+      )}
+      {updateUserError && (
+        <Alert color="failure" className="mt-5">
+          {updateUserError}
+        </Alert>
+      )}
     </div>
   );
 }
