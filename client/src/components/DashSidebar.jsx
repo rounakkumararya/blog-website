@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { signoutSuccess } from "../redux/user/userSlice";
+import { useDispatch } from "react-redux";
 
 export default function DashSidebar() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const { currentUser } = useSelector((state) => state.user);
   const [tab, setTab] = useState("");
@@ -15,6 +18,22 @@ export default function DashSidebar() {
       setTab(tabFromUrl);
     }
   }, [location.search]);
+
+  const handleSignout = async () => {
+    try {
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
+      });
+      const data = res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
@@ -33,7 +52,11 @@ export default function DashSidebar() {
           <Sidebar.Item className="cursor-text text-gray-500 ">
             Joined {currentUser.createdAt.split("T")[0]}
           </Sidebar.Item>
-          <Sidebar.Item icon={FaSignOutAlt} className="cursor-pointer">
+          <Sidebar.Item
+            onClick={handleSignout}
+            icon={FaSignOutAlt}
+            className="cursor-pointer"
+          >
             Sign Out
           </Sidebar.Item>
         </Sidebar.ItemGroup>
