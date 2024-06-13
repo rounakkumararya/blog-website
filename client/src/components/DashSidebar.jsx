@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { HiDocumentText } from "react-icons/hi";
 
 export default function DashSidebar() {
   const dispatch = useDispatch();
@@ -37,21 +38,33 @@ export default function DashSidebar() {
   return (
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
-        <Sidebar.ItemGroup>
+        <Sidebar.ItemGroup className="flex flex-col gap-1">
           <Link to="/dashboard?tab=profile">
             <Sidebar.Item
               active={tab === "profile"}
               icon={FaUser}
-              label={"User"}
+              label={currentUser.isAdmin ? "admin" : "user"}
               labelColor="dark"
               as="div"
             >
               Profile
             </Sidebar.Item>
           </Link>
+
           <Sidebar.Item className="cursor-text text-gray-500 ">
             Joined {currentUser.createdAt.split("T")[0]}
           </Sidebar.Item>
+          {currentUser.isAdmin && (
+            <Link to="/dashboard?tab=posts">
+              <Sidebar.Item
+                active={tab === "posts"}
+                icon={HiDocumentText}
+                as="div"
+              >
+                Posts
+              </Sidebar.Item>
+            </Link>
+          )}
           <Sidebar.Item
             onClick={handleSignout}
             icon={FaSignOutAlt}
