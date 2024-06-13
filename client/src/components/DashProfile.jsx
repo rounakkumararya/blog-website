@@ -1,12 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  TextInput,
-  Button,
-  Label,
-  FileInput,
-  Alert,
-  Modal,
-} from "flowbite-react";
+import { TextInput, Button, Label, Alert, Modal } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { MdCameraAlt } from "react-icons/md";
 import {
@@ -29,9 +22,10 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 export default function DashProfile() {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadingProgress, setImageFileUploadingProgress] =
@@ -245,9 +239,24 @@ export default function DashProfile() {
             onChange={handleChange}
           />
         </div>
-        <Button type="submit" color="blue">
-          Update
+        <Button
+          type="submit"
+          color="blue"
+          disabled={loading || imageFileUploading}
+        >
+          {loading ? "loading..." : "Update"}
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}>
+            <Button
+              type="button"
+              gradientDuoTone="pinkToOrange"
+              className="w-full"
+            >
+              Create a Post
+            </Button>
+          </Link>
+        )}
         <Button
           as="span"
           className="cursor-pointer"
