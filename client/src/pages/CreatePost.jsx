@@ -22,7 +22,7 @@ export default function CreatePost() {
             <option value="nextjs">Next.js</option>
           </Select>
         </div>
-        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
+        <div className="flex gap-4 items-center justify-between p-3">
           <FileInput type="file" accept="image/*" />
           <Button
             type="button"
@@ -39,7 +39,7 @@ export default function CreatePost() {
           className="h-72 mb-12"
           required
         />
-        <Button type="submit" gradientDuoTone="purpleToPink">
+        <Button type="submit" gradientDuoTone="pinkToOrange">
           Publish
         </Button>
       </form>
