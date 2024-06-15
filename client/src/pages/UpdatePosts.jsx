@@ -23,7 +23,7 @@ export default function UpdatePost() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(file);
+  console.log(formData);
 
   useEffect(() => {
     try {
