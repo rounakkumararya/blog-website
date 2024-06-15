@@ -52,7 +52,12 @@ export default function DashSidebar() {
           </Link>
 
           <Sidebar.Item className="cursor-text text-gray-500 ">
-            Joined {currentUser.createdAt.split("T")[0]}
+            Joined{" "}
+            {new Date(currentUser.createdAt).toLocaleDateString("en-GB", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </Sidebar.Item>
           {currentUser.isAdmin && (
             <Link to="/dashboard?tab=posts">
