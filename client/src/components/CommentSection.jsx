@@ -118,7 +118,7 @@ export default function CommentSection({ postId }) {
           <p>Signed in as:</p>
           <img
             className="h-5 w-5 object-cover rounded-full"
-            src={currentUser.profilePicture}
+            src={currentUser.profilePic}
             alt=""
           />
           <Link
