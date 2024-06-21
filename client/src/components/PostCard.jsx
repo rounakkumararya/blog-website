@@ -14,7 +14,7 @@ export default function PostCard({ post }) {
         <p className="text-lg font-semibold line-clamp-2">{post.title}</p>
         <div className="flex justify-between text-gray-500">
           <span className="text-xs">
-            {new Date(post.createdAt).toLocaleDateString()}
+            {new Date(post.createdAt).toLocaleDateString("en-GB")}
           </span>
           <span className="italic text-xs">{post.category}</span>
         </div>

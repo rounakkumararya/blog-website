@@ -88,7 +88,7 @@ export default function DashComments() {
               <Table.Body className="divide-y" key={comment._id}>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                   <Table.Cell>
-                    {new Date(comment.updatedAt).toLocaleDateString()}
+                    {new Date(comment.updatedAt).toLocaleDateString("en-GB")}
                   </Table.Cell>
                   <Table.Cell>{comment.content}</Table.Cell>
                   <Table.Cell>{comment.numberOfLikes}</Table.Cell>

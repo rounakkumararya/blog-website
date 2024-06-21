@@ -72,7 +72,9 @@ export default function Header() {
                   <div>{currentUser.username}</div>
                   <div className="text-xs  text-gray-500 dark:text-gray-400">
                     joined{" "}
-                    {new Date(currentUser.createdAt).toLocaleDateString()}
+                    {new Date(currentUser.createdAt).toLocaleDateString(
+                      "en-GB"
+                    )}
                   </div>
                 </div>
               </Avatar>

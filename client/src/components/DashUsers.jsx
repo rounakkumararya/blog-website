@@ -87,7 +87,7 @@ export default function DashUsers() {
                     />
                   </Table.Cell>
                   <Table.Cell>
-                    {new Date(user.createdAt).toLocaleDateString()}
+                    {new Date(user.createdAt).toLocaleDateString("en-GB")}
                   </Table.Cell>
                   <Table.Cell>{user.username}</Table.Cell>
                   <Table.Cell>{user.email}</Table.Cell>
