@@ -1,7 +1,7 @@
 import { Button, Textarea } from "flowbite-react";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaStar, FaThumbsUp } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 export default function Comment({ comment, onLike, onEdit, onDelete }) {
@@ -101,13 +101,13 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <button
                 type="button"
                 onClick={() => onLike(comment._id)}
-                className={`text-gray-400 hover:text-blue-500 ${
+                className={`text-gray-400 hover:text-yellow-300 ${
                   currentUser &&
                   comment.likes.includes(currentUser._id) &&
-                  "!text-blue-500"
+                  "!text-yellow-400"
                 }`}
               >
-                <FaThumbsUp className="text-sm" />
+                <FaStar className="text-sm" />
               </button>
               <p className="text-gray-400">
                 {comment.numberOfLikes > 0 &&

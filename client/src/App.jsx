@@ -13,6 +13,7 @@ import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePosts";
 import PostPage from "./pages/PostPage";
 import ScrollToTop from "./components/ScrollToTop";
+import GetStarted from "./pages/GetStarted";
 
 export default function App() {
   return (
@@ -20,19 +21,20 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/get-started" element={<GetStarted />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/post/:postSlug" element={<PostPage />} />
+        </Route>
         <Route path="/projects" element={<Projects />} />
-        <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
