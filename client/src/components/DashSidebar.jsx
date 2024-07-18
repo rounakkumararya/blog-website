@@ -11,6 +11,7 @@ import {
   HiDocumentText,
   HiOutlineUserGroup,
 } from "react-icons/hi";
+import { IoCreate } from "react-icons/io5";
 
 export default function DashSidebar() {
   const dispatch = useDispatch();
@@ -105,6 +106,13 @@ export default function DashSidebar() {
                 as="div"
               >
                 Comments
+              </Sidebar.Item>
+            </Link>
+          )}
+          {currentUser.isAdmin && (
+            <Link to="/create-post">
+              <Sidebar.Item icon={IoCreate} labelColor="dark" as="div">
+                Create Post
               </Sidebar.Item>
             </Link>
           )}
