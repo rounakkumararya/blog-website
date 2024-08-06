@@ -8,6 +8,7 @@ import {
   BsGithub,
   BsDribbble,
 } from "react-icons/bs";
+import logoImg from "../assets/logo/logo.svg";
 
 export default function FooterCon() {
   return (
@@ -22,11 +23,7 @@ export default function FooterCon() {
               to="/"
               className="self-center whitespace-nowrap text-lg sm:text-xl font-semibold  "
             >
-              BLOG
-              <span className="px-2 py-1 rounded-lg bg-gradient-to-tr  from-yellow-300  to-orange-400   text-white ">
-                Hive
-                <GiDrippingHoney className=" inline" />
-              </span>
+              <img className=" w-20 " src={logoImg} alt="logo image" />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">

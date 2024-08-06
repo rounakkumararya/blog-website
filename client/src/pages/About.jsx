@@ -1,6 +1,13 @@
+import aboutImg from "../assets/about/about.jpg";
+
 export default function About() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen items-center justify-center">
+      <img
+        className="object-cover  min-h-[80%]  min-w-full  rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 "
+        src={aboutImg}
+        alt=""
+      />
       <div className="max-w-2xl mx-auto p-3 text-center">
         <div>
           <h1 className="text-3xl font font-semibold text-center my-7">
